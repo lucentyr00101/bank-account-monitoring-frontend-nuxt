@@ -12,7 +12,7 @@
 
 <script>
 import moment from 'moment'
-import { postFund } from '@/utils/api'
+import { deductFund } from '@/utils/api'
 
 export default {
   data () {
@@ -36,7 +36,9 @@ export default {
         try {
           const formData = new FormData()
           formData.append('amount', this.amount)
-          await this.$axios.post(postFund(), formData, this.$auth.getHeader())
+          await this.$axios.post(deductFund(), formData, this.$auth.getHeader())
+          console.log('about to emit')
+          this.$root.$emit('toggleSnackbar', 'success')
         } catch (err) {
           console.log(err.response.data)
         }
