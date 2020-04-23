@@ -26,7 +26,8 @@ export default {
           title: 'Funds Management',
           items: [
             { title: 'Funds List', link: { name: 'funds-management-list' } },
-            { title: 'Add Funds', link: { name: 'funds-management-add' } }
+            { title: 'Add Funds', link: { name: 'funds-management-add' } },
+            { title: 'Deduct Funds', link: { name: 'funds-management-deduct' } }
           ]
         },
         {
