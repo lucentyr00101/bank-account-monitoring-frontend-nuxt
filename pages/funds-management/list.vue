@@ -1,5 +1,5 @@
 <template lang="pug">
-  v-data-table(:headers="headers" :items="logs" :items-per-page="5")
+  v-data-table(:headers="headers" :items="logs" :items-per-page="pagination.per_page" :server-items-length="pagination.total" @update:page="fetchData" :loading="loading")
 </template>
 
 <script>
@@ -14,20 +14,32 @@ export default {
         { text: 'Amount', align: 'center', value: 'amount' },
         { text: 'User', align: 'center', value: 'user.full_name' },
         { text: 'Date Posted', align: 'center', value: 'created_at' }
-      ]
+      ],
+      pagination: {
+        total: 0,
+        per_page: 0,
+        current_page: 1
+      },
+      loading: false
     }
   },
   mounted () {
-    this.getData()
+    this.fetchData()
   },
   methods: {
-    async getData () {
+    async fetchData (page = 1) {
+      this.loading = true
+      this.logs = []
       try {
-        const res = await this.$axios.get(listFunds(), this.$auth.getHeader())
+        const res = await this.$axios.get(listFunds(page), this.$auth.getHeader())
         this.logs = res.data.data
-      } catch (error) {
-        console.log(error)
+        this.pagination.total = res.data.meta.total
+        this.pagination.per_page = res.data.meta.per_page
+        this.pagination.current_page = res.data.meta.current_page
+      } catch (e) {
+        console.log(e)
       }
+      this.loading = false
     }
   }
 }
