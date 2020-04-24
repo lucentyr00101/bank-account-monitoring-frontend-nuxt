@@ -6,8 +6,8 @@ export const postFund = () => {
   return `/api/funds`
 }
 
-export const listFunds = () => {
-  return `/api/funds`
+export const listFunds = (page) => {
+  return `/api/funds?page=${page}`
 }
 
 export const deductFund = () => {
