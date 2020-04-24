@@ -99,7 +99,7 @@ export default {
   router: {
     extendRoutes (routes, resolve) {
       const forAuth = ['/home', '/profile', '/funds-management']
-      const forVisitors = ['/login']
+      const forVisitors = ['/login', '/register']
       routes.map((route) => {
         if (route.path === '/') {
           route.name = 'home'
