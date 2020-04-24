@@ -9,3 +9,11 @@ export const postFund = () => {
 export const listFunds = () => {
   return `/api/funds`
 }
+
+export const deductFund = () => {
+  return `/api/funds/deduct`
+}
+
+export const register = () => {
+  return `/api/user/register`
+}
