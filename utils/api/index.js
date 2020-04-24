@@ -13,3 +13,7 @@ export const listFunds = () => {
 export const deductFund = () => {
   return `/api/funds/deduct`
 }
+
+export const register = () => {
+  return `/api/user/register`
+}

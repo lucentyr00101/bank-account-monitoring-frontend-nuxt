@@ -9,6 +9,7 @@
             v-text-field(label="Password" outlined v-model="password" type="password" :readonly="loading")
             .d-flex.justify-space-between.pt-0.pb-3.align-center
               a.mb-0.tertiary--text Forgot your password?
+              nuxt-link.mb-0.tertiary--text(:to="{ name: 'register' }") New User? Register Here
               v-btn.px-8(color="primary" type="submit" :loading="loading") Login
 </template>
 
