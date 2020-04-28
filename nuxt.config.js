@@ -31,7 +31,6 @@ export default {
   */
   plugins: [
     '~/plugins/auth',
-    '~/plugins/route'
   ],
   /*
   ** Nuxt.js dev-modules
@@ -97,6 +96,7 @@ export default {
     }
   },
   router: {
+    middleware: ['route'],
     extendRoutes (routes, resolve) {
       const forAuth = ['/home', '/profile', '/funds-management']
       const forVisitors = ['/login', '/register']
