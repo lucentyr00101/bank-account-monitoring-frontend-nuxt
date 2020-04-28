@@ -103,9 +103,7 @@ export default {
       routes.map((route) => {
         if (route.path === '/') {
           route.name = 'home'
-          route.meta = {
-            forAuth: true
-          }
+          route.path = '/home'
         }
         if (forVisitors.includes(route.path)) {
           route.meta = {
